@@ -36,6 +36,7 @@ final class HatAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, @
         window.makeFirstResponder(terminal)
 
         setupMenu()
+        setDockIcon()
         NSApp.activate(ignoringOtherApps: true)
 
         startEditor()
@@ -64,6 +65,14 @@ final class HatAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, @
             return config.files.count > 1 ? "\(name) (+\(config.files.count - 1))" : name
         }
         return "vim-with-a-hat"
+    }
+
+    // Running as a bare executable (no .app bundle) means the Dock shows a
+    // generic icon. Set it explicitly from the bundled resource.
+    private func setDockIcon() {
+        guard let url = Bundle.module.url(forResource: "app-icon", withExtension: "png"),
+              let image = NSImage(contentsOf: url) else { return }
+        NSApp.applicationIconImage = image
     }
 
     // A minimal menu so Cmd-Q / Cmd-W behave like a normal mac app.

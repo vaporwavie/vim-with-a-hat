@@ -13,7 +13,10 @@ let package = Package(
             dependencies: [
                 .product(name: "SwiftTerm", package: "SwiftTerm"),
             ],
-            path: "Sources/vim-with-a-hat"
+            path: "Sources/vim-with-a-hat",
+            resources: [
+                .copy("Resources/app-icon.png"),
+            ]
         ),
     ]
 )
