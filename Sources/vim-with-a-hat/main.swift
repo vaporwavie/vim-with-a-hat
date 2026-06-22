@@ -1,5 +1,13 @@
 import AppKit
 
+// SwiftTerm draws glyphs through CoreGraphics, which honors the global
+// `AppleFontSmoothing` default. Users who disable it system-wide (`defaults
+// write -g AppleFontSmoothing 0`) get noticeably thinner text here than in
+// terminals like Ghostty that force their own smoothing. Writing the key into
+// this process's own defaults domain (higher precedence than the global one)
+// before AppKit starts restores the heavier, consistent rendering.
+UserDefaults.standard.set(1, forKey: "AppleFontSmoothing")
+
 switch parseArguments(Array(CommandLine.arguments.dropFirst())) {
 case .help:
     print(helpText)
