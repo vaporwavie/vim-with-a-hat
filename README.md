@@ -1,4 +1,6 @@
-# vim-with-a-hat
+# vim with a hat
+
+<img width="1000" alt="Screenshot 2026-06-22 at 11 33 28" src="https://github.com/user-attachments/assets/6930dfee-e0d8-4550-ab26-36eb073f6c46" />
 
 A tiny native macOS GUI hat for `vim`/`nvim`. Run `vh <file>` and a real native
 window pops open with your editor inside it; close it with `:q` and the window
@@ -8,8 +10,7 @@ dismiss, without launching a full terminal app.
 It is deliberately low-footprint: a single ~2 MB Mach-O binary that links only
 system frameworks and the OS-provided Swift runtime. No Electron, no Chromium,
 no bundled Node — nothing that balloons into a megalodon. Terminal emulation is
-provided by [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm), compiled
-statically into the binary.
+provided by [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm), compiled statically into the binary. My motivation here was to simply have a way to pipe vim through a GUI so I can run shell outputs from Ghostty.
 
 ## Build & install
 
